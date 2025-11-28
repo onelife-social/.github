@@ -10,8 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout shared .github repo
         uses: actions/checkout@v5
+        with:
+          repository: onelife-social/.github
+          path: .github-shared
 
       # 1) Añadir la issue al Project 9
       - name: Add issue to Project delta
