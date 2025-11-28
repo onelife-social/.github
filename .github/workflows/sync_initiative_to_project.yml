@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          repository: onelife-social/.github
+          path: .github-shared
 
       - name: Add issue to Project delta
         uses: actions/add-to-project@v0.5.0
@@ -29,7 +32,12 @@ jobs:
           github-token: ${{ secrets.PROJECTS_TOKEN }}
           script: |
             const path = require("path");
-            const syncInitiative = require(
-              path.join(process.env.GITHUB_WORKSPACE, ".github", "scripts", "sync_initiative_to_project.js")
+            const scriptPath = path.join(
+              process.env.GITHUB_WORKSPACE,
+              ".github-shared",
+              ".github",
+              "scripts",
+              "sync_initiative_to_project.js"
             );
+            const syncInitiative = require(scriptPath);
             await syncInitiative({ github, context, core });
