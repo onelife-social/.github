@@ -3,10 +3,6 @@ name: Sync Initiative to Project
 on:
   workflow_call:
 
-permissions:
-  contents: read
-  issues: read
-
 jobs:
   sync-initiative:
     # Only run for Feature-type issues (Project issue type)
