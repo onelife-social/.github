@@ -1,0 +1,188 @@
+name: "🧩 Nueva Initiative"
+description: "Crea una iniciativa clara para arrancar el flujo Discovery → Design → Implementation."
+title: "[Initiative] "
+labels: ["enhancement"]
+assignees: []
+type: feature
+projects: ["onelife-social/9"]
+body:
+  ###########################################################################
+  ## 1 — PROBLEMA
+  ###########################################################################
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: "🛑 Problema identificado"
+      description: "Describe qué problema real hemos detectado. NO propongas solución aquí."
+      placeholder: "Ej: 'El drop entre selector de invitados y checkout es 36%'."
+    validations:
+      required: true
+
+  - type: textarea
+    id: fuente
+    attributes:
+      label: "📥 De dónde viene"
+      description: "Fuente del problema: datos, soporte, analytics, feedback, bug, sesiones, etc."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alcance_impacto
+    attributes:
+      label: "📊 Alcance e impacto preliminar"
+      description: "Usuarios afectados, % sesiones, impacto € estimado. No importa si es aproximado."
+      placeholder: "Ej: Afecta a ~27% de usuarios del funnel, ~50k sesiones/mes."
+    validations:
+      required: false
+
+  ###########################################################################
+  ## 2 — CONTEXTO ESTRATÉGICO (NSM, Squad, OKR)
+  ###########################################################################
+
+  - type: dropdown
+    id: squad
+    attributes:
+      label: "🧩 Squad responsable"
+      options:
+        - "Value Proposition ::: squad-value-proposition"
+        - "Monetization ::: squad-monetization"
+        - "Quality ::: squad-quality"
+        - "Viral Coefficient ::: squad-viral-coefficient"
+        - "Retention ::: squad-retention"
+        - "Security ::: squad-security"
+        - "Cost ::: squad-cost"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: nsm
+    attributes:
+      label: "⭐ NSM afectada"
+      description: "Selecciona la North Star Metric impactada"
+      options:
+        - "Revenue ::: nsm-revenue"
+        - "Retention ::: nsm-retention"
+        - "NPS ::: nsm-nps"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: okr
+    attributes:
+      label: "🎯 OKR asociado"
+      options:
+        - "+10% revenue vs. Q3 ::: okr-revenue-q3"
+        - "NPS >= 60 ::: okr-nps-60"
+        - "Retention W1≥40% / W5≥20% ::: okr-retention-w1w5"
+        - "Other ::: okr-other"
+    validations:
+      required: true
+
+  ###########################################################################
+  ## 3 — HIPÓTESIS & OBJETIVO
+  ###########################################################################
+
+  - type: textarea
+    id: hipotesis
+    attributes:
+      label: "🧠 Hipótesis inicial"
+      description: "Qué creemos que está pasando (no la solución final)."
+      placeholder: "Ej: Creemos que el selector actual genera confusión porque..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: "🎯 Objetivo preliminar"
+      description: "Resultado esperado a alto nivel."
+      placeholder: "Ej: Reducir el drop del 36% al 25%."
+    validations:
+      required: false
+
+  ###########################################################################
+  ## 4 — PRIORIDAD PRE-DISCOVERY (RICE COMPONENTS)
+  ###########################################################################
+
+  - type: input
+    id: reach
+    attributes:
+      label: "📈 Reach estimado"
+      description: "Número de usuarios afectados. Ej: 50000"
+      placeholder: "Ej: 120000"
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: "📊 Impact"
+      description: "Estimación del impacto en la NSM"
+      options:
+        - "- Mínimo (<1%) — 0.25 ::: impact-minimal"
+        - "▪️Bajo (≈1%) — 0.5 ::: impact-low"
+        - "◾ Medio (1–5%) — 1 ::: impact-medium"
+        - "◼️ Alto (5–15%) — 2 ::: impact-high"
+        - "⬛ Masivo (>15%) — 3 ::: impact-massive"
+
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: "🔍 Confidence"
+      description: "Nivel de confianza en el impacto estimado"
+      options:
+        - "🔴 20% — Pura hipótesis ::: confidence-20"
+        - "🟠 40% — Comentarios aislados ::: confidence-40"
+        - "🟡 60% — Basado en tickets/métricas ::: confidence-60"
+        - "🟢 80% — Evidencia clara soporte + datos ::: confidence-80"
+        - "🔵 100% — Validado con métricas o tests ::: confidence-100"
+
+  - type: dropdown
+    id: effort
+    attributes:
+      label: "📦 Effort (Size)"
+      description: "Estimación del esfuerzo usando la escala de tamaños"
+      options:
+        - "🐣 XX-Tiny — 0p ::: effort-xxtiny"
+        - "🦋 X-Tiny — 0.5p ::: effort-xtiny"
+        - "🦔 Tiny — 1p ::: effort-tiny"
+        - "🐇 Small — 2p ::: effort-small"
+        - "🦑 Medium — 3p ::: effort-medium"
+        - "🐂 Large — 5p ::: effort-large"
+        - "🐋 X-Large — 8p ::: effort-xlarge"
+        - "🐳 XX-Large — 13p ::: effort-xxlarge"
+        - "🦣 Massive — 20p ::: effort-massive"
+
+  ###########################################################################
+  ## 5 — DECISIÓN
+  ###########################################################################
+
+  - type: dropdown
+    id: decision
+    attributes:
+      label: "⚖️ ¿Merece iniciar Discovery?"
+      options:
+        - "Depende / requiere más datos"
+        - "Sí, merece explorar"
+        - "No, de momento no"
+
+  - type: textarea
+    id: notas
+    attributes:
+      label: "📎 Notas y referencias"
+      description: "Links a datos, dashboards, feedback relevante, sesiones grabadas, capturas, etc."
+      placeholder: "Ej: Amplitude, GA4, Notion, soporte..."
+    validations:
+      required: false
+
+  ###########################################################################
+  ## 7 — Sistema (NO tocar)
+  ###########################################################################
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ✔ Esta Issue se etiquetará como *Feature*  
+        ✔ El Project V2 establecerá `Workflow Phase = Discovery` automáticamente  
+        ✔ Los labels `nsm:*`, `squad:*`, `impact:*`, etc. servirán para rellenar campos del Project  
+        ✔ Crea desde aquí las tasks de Discovery, PRD, Diseño, Implementación y Resultados

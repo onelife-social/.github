@@ -1,0 +1,32 @@
+name: Add to Project + Copy fields from parent
+
+on:
+  workflow_call:
+
+jobs:
+  add-and-copy:
+    # Ejecutar solo si tiene tarea padre y no es un PR
+    if: ${{ github.event.issue.parent_issue_url && ! github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      # 1) Añadir la issue al Project 9
+      - name: Add issue to Project delta
+        uses: actions/add-to-project@v0.5.0
+        with:
+          project-url: https://github.com/orgs/onelife-social/projects/9
+          github-token: ${{ secrets.PROJECTS_TOKEN }}
+
+      # 2) Copiar campos del padre si existe
+      - name: Copy project fields from parent issue
+        uses: actions/github-script@v7
+        env:
+          GH_TOKEN: ${{ secrets.PROJECTS_TOKEN }}
+        with:
+          github-token: ${{ env.GH_TOKEN }}
+          script: |
+            const copyFields = require('.github/scripts/copy_fields_from_parent.js');
+            await copyFields({ github, context, core });
