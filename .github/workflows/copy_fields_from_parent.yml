@@ -31,5 +31,10 @@ jobs:
         with:
           github-token: ${{ env.GH_TOKEN }}
           script: |
-            const copyFields = require('.github/scripts/copy_fields_from_parent.js');
+            const path = require('path');
+            const scriptPath = path.join(
+              process.env.GITHUB_WORKSPACE,
+              '.github-shared/.github/scripts/copy_fields_from_parent.js'
+            );
+            const copyFields = require(scriptPath);
             await copyFields({ github, context, core });
